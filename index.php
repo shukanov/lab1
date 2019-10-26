@@ -1,6 +1,5 @@
 <?php
   session_start();
-  require "connection.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -11,7 +10,6 @@
     <meta name="author" content="">
 
     <title>test</title>
-	
     <link href="style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -34,30 +32,22 @@
               <a class="nav-link" href="event.php">Секции</a>
             </li>
             <?php 
-            if(isset($_SESSION['login']))
+            if(isset($_SESSION['username']))
               {?>
                 <li class="nav-item">
                   <a class="nav-link" href="profile.php">Личный кабинет</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="event/create.php">Добавить мероприятие</a>
                 </li> 
                 <li class="nav-item">
                   <a class="nav-link" href="exit.php">Выйти</a>
-                </li> 
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><?=$_SESSION['login']?></a>
                 </li> 
                 <?php
               } 
             else
             {?>
               <li class="nav-item">
-                <a class="nav-link" href="registration/entry.php">Войти</a>
+                <a class="nav-link" href="entry.php">Войти</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link " href="registration/reg.php">Регистрация</a>
-              </li> <?php
+			  <?php
             }
             ?>
           </ul>
@@ -70,7 +60,7 @@
     </nav>
     <div class="wrap">
       <div class="container">
-        <!-- Three columns of text below the carousel -->
+	   <!-- Three columns of text below the carousel -->
         <div class="row">
           <div class="col-lg-4">
             <img class="rounded-circle" src="images\section2.png" alt="Generic placeholder image" width="140" height="140">
@@ -91,22 +81,47 @@
             <p><a class="btn btn-secondary" href="#" role="button">Просмотреть &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
-        <br><br>
-        <?php 
-          if($_GET['status'] == "edit")
-          { ?>
-            <a href="/" class="btn btn-success active" role="button" aria-pressed="true">Отменить</a>
-          <?php } 
-          else
-          {?>
-          <a href="index.php?status=edit" class="btn btn-success active" role="button" aria-pressed="true">Редактировать</a>
-          <?php }
-        ?>
+		        <br><br>
+
         <!-- START THE FEATURETTES -->
-        <?php require "event/eventList.php"; ?>
-       
+
+        <hr class="featurette-divider">
+		<br><br>
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">Конструирование <span class="text-muted">Ериной Юлии Михайловны</span></h2>
+            <p class="lead">Моделирование и конструирование способствуют познанию мира техники и расширению технического кругозора, развивают конструкторские способности, техническое мышление, мотивацию к творческому поиску, технической деятельности. </p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="images\event4.jpg" alt="Generic placeholder image">
+          </div>
+        </div>
+		<br><br>
+        <hr class="featurette-divider">
+		<br><br>
+        <div class="row featurette">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Мероприятие по ПДД <span class="text-muted">в детком саду "Заря"</span></h2>
+            <p class="lead">В детском саду прошло мероприятие, направленное на профилактику дорожно-транспортного травматизма. Основной целью проведения мероприятия является: формирование представлений детей о правилах дорожного движения и дорожных знаках.Разработана и проведена интегрированная образовательная деятельность в группе: НОД по образовательной области «Познавательное развитие» на тему «Азбука пешехода», где у детей формировались основы безопасного поведения на улице; познакомились со строением улицы и дорожными знаками, предназначенными для водителей и пешеходов, с работой Государственной инспекции безопасности дорожного движения; закрепляли правила дорожного движения, применяли знания, полученные ранее в практической деятельности.</p>
+          </div>
+          <div class="col-md-5 order-md-1">
+            <img class="featurette-image img-fluid mx-auto" src="images\event2.png" alt="Generic placeholder image">
+          </div>
+        </div>
+		<br><br>
+        <hr class="featurette-divider">
+		<br><br>
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">Алло, мы ищем таланты. <span class="text-muted">+Фото.</span></h2>
+            <p class="lead">Конкурс талантов для детей - это стремление совершенствовать свои таланты, достигать цели, стремиться к результату. Но нужно отличать стремление ребёнка и ваше (родителя). Втягивание ребёнка в конкурсы для реализации родительских амбиций может привести к психологическим проблемам.</p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="images\event1.jpg" alt="Generic placeholder image">
+          </div>
+        </div>
       </div><!-- /.container -->
-    </div>
+	      </div>
     <footer class="container">
       <hr>
       <p class="float-right"><a href="#">Наверх</a></p>

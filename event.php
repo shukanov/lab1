@@ -8,9 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>test</title>
-
 	<link href="style.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -33,30 +31,22 @@
               <a class="nav-link" href="event.php">Секции</a>
             </li>
             <?php 
-              if(isset($_SESSION['login']))
+              if(isset($_SESSION['username']))
                 {?>
                   <li class="nav-item">
                     <a class="nav-link" href="profile.php">Личный кабинет</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="event/create.php">Добавить мероприятие</a>
                   </li> 
                   <li class="nav-item">
                     <a class="nav-link" href="exit.php">Выйти</a>
                   </li> 
-                  <li class="nav-item">
-                  <a class="nav-link" href="#"><?=$_SESSION['login']?></a>
-                </li> 
                   <?php
                 } 
               else
               {?>
                 <li class="nav-item">
-                <a class="nav-link" href="registration/entry.php">Войти</a>
+                <a class="nav-link" href="entry.php">Войти</a>
                 </li>
-                <li class="nav-item">
-                <a class="nav-link disabled" href="registration/reg.php">Регистрация</a>
-                </li> <?php
+                <?php
               }
             ?>
           </ul>
@@ -67,7 +57,6 @@
         </div>
 		</div>
       </nav>
-
 	<div class="wrap">
       <div class="jumbotron">
         <div class="container">
@@ -76,7 +65,6 @@
           <p><a class="btn btn-primary btn-lg" href="#" role="button">Записаться &raquo;</a></p>
         </div>
       </div>
-
       <div class="container">
         <!-- Example row of columns -->
         <div class="row">
@@ -96,9 +84,7 @@
             <p><a class="btn btn-success" href="#" role="button">Записаться &raquo;</a></p>
           </div>
         </div>
-
         
-
       </div> <!-- /container -->
 	</div>
     <footer class="container">
@@ -106,6 +92,5 @@
         <p class="float-right"><a href="#">Наверх</a></p>
         <p>&copy; 2017-2018 Company, Inc. </p>
       </footer>
-
   </body>
 </html>

@@ -1,4 +1,41 @@
-
+<?php
+session_start();
+$hash = [
+  "iscm" => "star",
+  "imit" => "123str",
+];
+if(isset($_POST['submit']))
+{
+  if(isset($_POST['login']) && isset($_POST['password']))
+  {
+    $login = $_POST['login'];
+    $password = $_POST['password'];
+    if(array_key_exists($login, $hash))
+    {
+      if($password == $hash["$login"])
+        {
+          $_SESSION['username'] = $login;
+          header("Location: profile.php");
+        }
+        else
+        {
+          $text = 'Вы ввели неправильный пароль';	
+          require 'errors.php';
+          return;
+        }
+        exit;
+    }
+    else
+    {
+      $text = 'Вы ввели неправильный логин';
+      require 'errors.php';
+      return;
+    }  
+    exit;
+  }
+  exit;
+} 
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,8 +45,8 @@
     <meta name="author" content="">
 
     <title>test</title>
-	
-	<link href="../style.css" rel="stylesheet">
+
+	<link href="style.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -28,10 +65,7 @@
             <a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../event.php">Секции</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="reg.php">Регистрация</a>
+            <a class="nav-link" href="event.php">Секции</a>
           </li> 
           </ul>
           <form class="form-inline mt-2 mt-md-0">
@@ -44,7 +78,7 @@
     <div class="wrap">
       <div class="container">
         <div class="row  justify-content-center align-content-center">
-          <form action="test_reg.php" method="POST">
+          <form method="POST">
             <div class="form-group">
               <label for="exampleInputEmail1">Введите логин</label>
               <input type="text" name="login" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Логин">
@@ -54,7 +88,6 @@
               <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Пароль">
             </div>
             <button type="submit" name="submit" class="btn btn-primary">Войти</button>
-            <a href="form_send_pass.php"><small>Забыли пароль?</small></a>
           </form>
         </div>
       </div> <!-- container -->
